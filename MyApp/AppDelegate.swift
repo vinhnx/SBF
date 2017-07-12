@@ -13,24 +13,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        
+
         // swiftlint
-        let counter = (launchOptions?.count)!
+        // before
+        // warning: Force Unwrapping Violation: Force unwrapping should be avoided. (force_unwrapping)
+        //        let counter = (launchOptions?.count)!
+
+        // after
+        let counter = launchOptions.flatMap { $0.count }
         print(counter)
-        
-        
+
         // R.swift
-        let fooViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: String(describing: FooViewController.self)) as? FooViewController
+        // before
+        //        let fooViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: FooViewController.self)) as? FooViewController
         
-        
+        // after
+        let fooViewController = R.storyboard.main.fooViewController()
+
         self.window?.rootViewController = fooViewController
         self.window?.makeKeyAndVisible()
-        
+
         return true
     }
 
@@ -56,6 +60,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-
