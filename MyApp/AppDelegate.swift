@@ -16,6 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // swiftlint
+        let counter = (launchOptions?.count)!
+        print(counter)
+        
+        
+        // R.swift
+        let fooViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: String(describing: FooViewController.self)) as? FooViewController
+        
+        
+        self.window?.rootViewController = fooViewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
