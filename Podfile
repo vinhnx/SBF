@@ -7,7 +7,8 @@ target 'MyApp' do
 
   # Pods for MyApp
   pod 'SwiftLint'
-
+  pod 'R.swift'
+  
   target 'MyAppTests' do
     inherit! :search_paths
     # Pods for testing
