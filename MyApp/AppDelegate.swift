@@ -22,8 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        let counter = (launchOptions?.count)!
 
         // after
-        let counter = launchOptions.flatMap { $0.count }
-        print(counter)
+        // Disable SwiftLint rule in code, either disable inline or from `.swiftlint.yml`
+        // reference: https://github.com/realm/SwiftLint#disable-rules-in-code
+        // swiftlint:disable:next redundant_discardable_let
+        let _ = launchOptions.flatMap { $0.count }
+        // swiftlint:disable:previous redundant_discardable_let
 
         // R.swift
         // before
@@ -59,5 +62,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 }
